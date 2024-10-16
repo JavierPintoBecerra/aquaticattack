@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     bottomShipLives -= 1;
                     updateLives();  // Actualiza las vidas en pantalla
                     cells[bottomShipPosition].classList.add('exploded-ship');
-                    setTimeout(() => cells[bottomShipPosition].classList.remove('exploded-ship'), 500);
+                    setTimeout(() => cells[bottomShipPosition].classList.remove('exploded-ship', 'laser'), 500);
                     clearInterval(laserId);
                     if (bottomShipLives <= 0) {
                         result.textContent = '¡La nave superior ganó!';
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     topShipLives -= 1;
                     updateLives();  // Actualiza las vidas en pantalla
                     cells[topShipPosition].classList.add('exploded-ship');
-                    setTimeout(() => cells[topShipPosition].classList.remove('exploded-ship'), 500);
+                    setTimeout(() => cells[topShipPosition].classList.remove('exploded-ship', 'laser'), 500);
                     clearInterval(laserId);
                     if (topShipLives <= 0) {
                         result.textContent = '¡La nave inferior ganó!';
