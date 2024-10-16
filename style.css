@@ -5,6 +5,18 @@ body {
     font-family: Arial, sans-serif;
     background-color: black;
     color: white;
+    margin: 0;
+}
+
+h1, h2 {
+    color: white;
+}
+
+#info {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    margin-bottom: 10px;
 }
 
 #game-board {

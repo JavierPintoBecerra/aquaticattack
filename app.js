@@ -11,9 +11,10 @@ for (let i = 0; i < 225; i++) {
 document.addEventListener('DOMContentLoaded', () => {
     const cells = document.querySelectorAll('.cell');
     const result = document.getElementById('result');
-    let cellsWidth = 15;
+    const topLivesDisplay = document.getElementById('top-lives');
+    const bottomLivesDisplay = document.getElementById('bottom-lives');
     
-    // Posiciones iniciales de las naves
+    let cellsWidth = 15;
     let topShipPosition = 7;  // Nave superior
     let bottomShipPosition = 217;  // Nave inferior
     
@@ -23,6 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Renders top and bottom ships
     cells[topShipPosition].classList.add('top-ship');
     cells[bottomShipPosition].classList.add('bottom-ship');
+
+    // Actualizar vidas en pantalla
+    function updateLives() {
+        topLivesDisplay.textContent = `Vidas de la nave superior: ${topShipLives}`;
+        bottomLivesDisplay.textContent = `Vidas de la nave inferior: ${bottomShipLives}`;
+    }
 
     // Mueve las naves
     function moveShip(event) {
@@ -72,6 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Si el láser toca la nave inferior
                 if (laserPosition === bottomShipPosition) {
                     bottomShipLives -= 1;
+                    updateLives();  // Actualiza las vidas en pantalla
                     cells[bottomShipPosition].classList.add('exploded-ship');
                     setTimeout(() => cells[bottomShipPosition].classList.remove('exploded-ship'), 500);
                     clearInterval(laserId);
@@ -98,6 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Si el láser toca la nave superior
                 if (laserPosition === topShipPosition) {
                     topShipLives -= 1;
+                    updateLives();  // Actualiza las vidas en pantalla
                     cells[topShipPosition].classList.add('exploded-ship');
                     setTimeout(() => cells[topShipPosition].classList.remove('exploded-ship'), 500);
                     clearInterval(laserId);
